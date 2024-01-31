@@ -5,28 +5,32 @@ import './App.css';
 
 function App() {
 
-    function 결혼가능하냐(소득: number, 집보유여부: boolean, 매력점수: string): string {
-        let 점수 = 소득;
-        if (집보유여부) {
-            점수 += 500;
-        }
+    let 접니다: '대머리' | '솔로';
+    접니다 = "대머리";
 
-        if (매력점수 == '상') {
-            점수 += 100;
-        }
-
-        if (점수 >= 600)
-            return '결혼가능'
-
-        return 점수.toString();
+    function 함수(x: '가위' | '바위' | '보' ): ('가위' | '바위' | '보')[]{
+        return ['가위'];
     }
+
+    // literal type은 const 업글 버전과 비슷
+
+    함수('가위');
+
+    var 자료 = {
+         name : 'kim'
+    } as const
+
+
+    function 내함수(a: 'kim'){
+        return 자료.name
+    }
+
+    내함수(자료.name);
 
 
     return (
         <div className="App">
             <header className="App-header">
-                {결혼가능하냐(700, false, '중')}
-                {결혼가능하냐(100, false, '상')}
             </header>
         </div>
     );
