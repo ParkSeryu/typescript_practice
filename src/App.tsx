@@ -3,28 +3,61 @@ import './App.css';
 
 
 function App() {
-    let 제목 = document.querySelector('#title');
-    if (제목?.innerHTML != undefined) {
-        제목.innerHTML = '반가워요'
+
+    class Person {
+        name;
+        age;
+
+        constructor(a: string) {
+            this.name = a;
+            this.age = 20;
+        }
     }
 
-    let 링크 = document.querySelector('.link');
-    if (링크 instanceof HTMLAnchorElement)
-        링크.href = 'https://kakao.com'
+    let john = new Person('12');
+    let kim = new Person('34');
 
-    let 버튼 = document.querySelector('#button');
-    let 이미지 = document.querySelector('#image');
-    버튼?.addEventListener('click', function () {
-        if (이미지 instanceof HTMLImageElement)
-            이미지.src = 'new.jpg'
-    })
+    class Car {
+        model: string;
+        price: number;
 
-    let 링크2 = document.querySelectorAll('.naver');
-    링크2.forEach((each) => {
-        if(each instanceof HTMLAnchorElement){
-            each.href='https://kakao.com'
+        constructor(model: string, price: number) {
+            this.model = model;
+            this.price = price;
         }
-    })
+
+
+        tax = () => {
+            return this.price / 10
+        }
+    }
+
+    let car1 = new Car('소나타', 3000);
+    console.log(car1);
+    console.log(car1.tax());
+
+    class Word {
+
+        num: number[] = [];
+        str: string[] = [];
+
+        constructor(...params: (string | number)[]) {
+            params.forEach(each => {
+                if(typeof each === 'number'){
+                    this.num.push(each);
+                }else{
+                    this.str.push(each);
+                }
+            })
+        }
+
+
+    }
+
+    let obj = new Word('kim', 3, 5, 'park');
+    console.log(obj.num);
+    console.log(obj.str);
+
 
     return (
         <div className="App">
