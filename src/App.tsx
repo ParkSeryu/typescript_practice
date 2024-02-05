@@ -4,59 +4,63 @@ import './App.css';
 
 function App() {
 
-    class Person {
-        name;
-        age;
+    // class 만드는 법이랑 유사함
+    interface Square {
+        color: string,
+        width: number
+    }
 
-        constructor(a: string) {
-            this.name = a;
-            this.age = 20;
+    let 네모 = {
+        color: 'red', width: 100
+    };
+
+    interface 학상 {
+        name: string,
+    }
+
+    interface 선상 extends 학상 {
+        age: number
+    }
+
+    interface Product {
+        brand: string,
+        serialNumber: number,
+        model: string[]
+    }
+
+    let 상품: Product = {
+        brand: 'Samsung', serialNumber: 1360, model: ['TV', 'phone']
+    };
+
+    interface shop {
+        product: string,
+        price: number
+    }
+
+    let 장바구니: shop[] = [{product: '청소기', price: 7000},
+        {product: '삼다수', price: 800}
+    ];
+
+    interface per extends shop {
+        card: boolean
+    }
+
+    interface A {
+        plus(a : number, b: number): number
+
+        minus(a : number, b: number): number
+    }
+
+    let abc:A = {
+        plus: (a: number, b: number) => {
+            return a + b
+        }
+        minus: (a: number, b: number) => {
+            return a - b;
         }
     }
 
-    let john = new Person('12');
-    let kim = new Person('34');
-
-    class Car {
-        model: string;
-        price: number;
-
-        constructor(model: string, price: number) {
-            this.model = model;
-            this.price = price;
-        }
-
-
-        tax = () => {
-            return this.price / 10
-        }
-    }
-
-    let car1 = new Car('소나타', 3000);
-    console.log(car1);
-    console.log(car1.tax());
-
-    class Word {
-
-        num: number[] = [];
-        str: string[] = [];
-
-        constructor(...params: (string | number)[]) {
-            params.forEach(each => {
-                if(typeof each === 'number'){
-                    this.num.push(each);
-                }else{
-                    this.str.push(each);
-                }
-            })
-        }
-
-
-    }
-
-    let obj = new Word('kim', 3, 5, 'park');
-    console.log(obj.num);
-    console.log(obj.str);
+    console.log(장바구니)
 
 
     return (
